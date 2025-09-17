@@ -3,27 +3,74 @@
 
 <div class="row">
     <div class="col-6 mx-auto" >
-        <form action="/products" method="POST">
+        <form action="/products" method="POST" novalidate class="needs-validation">
             <div class="mb-3">
                 <label for="naam">Name :</label>
-                <input type="text" class="form-control" name="name" id="naam" placeholder="Name of the product">
-            </div>
+                <input type="text" class="form-control" name="name" id="naam" placeholder="Name of the product" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a product name.
+                </div>
+                </div>
+             
             <div class="mb-3">
                 <label for="img">Image :</label>
-                <input type="text" class="form-control" name="img" id="img" placeholder="URL of the product">
+                <input type="text" class="form-control" name="img" id="img" placeholder="URL of the product" required>
+            </div>
+             <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please choose a product image.
             </div>
             <div class="mb-3">
                 <label for="price">Price :</label>
-                <input type="number" class="form-control" name="price" id="price" placeholder="Price of the product">
+                <input type="number" class="form-control" name="price" id="price" placeholder="Price of the product" required>
+            </div>
+             <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please choose a product price.
             </div>
             <div class="mb-3">
                 <label for="desc">Description :</label>
-                <textarea name="desc" id="desc" placeholder="Any description of the Product" rows="3"></textarea>
+                <textarea name="desc" id="desc" placeholder="Any description of the Product" rows="3" required></textarea>
+            </div>
+             <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please choose a product description.
             </div>
             <button type="submit" class="btn btn-sm btn-success">Add product</button>
         </form>
     </div>
 </div>
 
+<script>
+    //iife -> (immediately invoked functional expression)
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>
 </body>
 </html>

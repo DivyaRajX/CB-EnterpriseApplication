@@ -2,6 +2,13 @@
 <%- include('../partials/navbar')%>
 <div class="row">
     <div class="col-lg-6 mt-3">
+        <!-- displaying message flash-->
+        <div class="mb-3">
+            <% if(msg && msg.length){ %> 
+                <%= msg %>
+            <%} %>
+        </div>
+      
         <div class="card h-50 shadow-sm">
         <img src="<%= foundProduct.img %>" class="card-img-top" alt="<%= foundProduct.name %>">
         <div class="card-body">

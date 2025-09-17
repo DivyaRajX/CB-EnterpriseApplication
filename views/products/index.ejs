@@ -9,7 +9,7 @@
           <img src="<%= item.img %>" class="card-img-top" alt="<%= item.name %>">
           <div class="card-body">
             <h5 class="card-title"><%= item.name %></h5>
-            <h6 class="text-muted">₹ <%= item.price.toLocaleString() %></h6>
+            <h6 class="text-muted">₹ <%= item.price.toLocaleString() %></h6> 
             <p class="card-text"><%= item.desc %></p>
             <a href="/products/<%=item.id%>" class="btn btn-info">View</a>
             <form class="d-inline-block" action="/products/<%=item.id%>?_method=DELETE" method="POST">

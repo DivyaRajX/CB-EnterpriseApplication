@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router(); // mini instance
 const Product = require('../models/Product.model')
 const Review = require('../models/Review.model')
+const {validateProduct} = require('../middleware')
+
+
+
 //to show all the products
 router.get('/products', async (req, res)=>{
     let products = await Product.find({})
@@ -14,7 +18,7 @@ router.get('/product/new', (req, res)=>{
 })
 
 //to actually add the product
-router.post('/products', async(req, res)=>{
+router.post('/products', validateProduct, async(req, res)=>{
     const {name , img, price, desc} = req.body;
     await Product.create({name, img, price, desc})
     res.redirect('/products')
@@ -24,7 +28,7 @@ router.post('/products', async(req, res)=>{
 router.get('/products/:id', async(req, res)=>{
     let {id} = req.params;
     let foundProduct = await Product.findById(id).populate('reviews');
-    res.render('products/show', {foundProduct})
+    res.render('products/show', {foundProduct, msg : req.flash('msg')});
 })
 
 //form to edit the product
@@ -39,6 +43,7 @@ router.patch('/products/:id', async(req,res)=>{
     let {id} = req.params;
     let{name, img, price, desc} = req.body;
     await Product.findByIdAndUpdate(id,{name, img, price, desc});
+    req.flash('msg', 'product added succeessfully')
     res.redirect(`/products/${id}`);
 })
 

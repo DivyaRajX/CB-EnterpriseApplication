@@ -6,4 +6,19 @@
 
 
 
-authorization and authentication -> passport js
+authorization and authentication -> passport js ->{
+    passport-local
+    passport local mongoose
+}
+
+<!-- <div>
+        <label class="form-label" for="email">Email: </label>
+        <input type="text" name="email" id="email">
+</div> -->
+
+
+lifecycle of REACT ->{
+    componenet did mount()
+    component did update()
+    component will unmount()
+}
